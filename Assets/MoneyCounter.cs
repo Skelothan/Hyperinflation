@@ -52,7 +52,7 @@ public class MoneyCounter : MonoBehaviour
         shellenCount.SetText(string.Format("§ {0}", shellen));
 
         TextMeshProUGUI usdCount = usdCountTextObject.GetComponent<TextMeshProUGUI>();
-        usdCount.SetText(string.Format("$ {0:#.00}", shellen * conversionRate));
+        usdCount.SetText(string.Format("$ {0:0.00}", shellen / conversionRate));
     }
 
 }
