@@ -8,6 +8,9 @@ public class MoneyCounter : MonoBehaviour
 
     public GameObject shellenCountTextObject;
     public GameObject usdCountTextObject;
+    public GameObject statsDisplayObject;
+
+    private StatsDisplay statsDisplay;
 
     // Currency of the game.
     // Name is both a corruption of "shilling" and a reference to the historical
@@ -30,6 +33,8 @@ public class MoneyCounter : MonoBehaviour
         conversionRate = 2.1f;
         shellenPerFrame = 0;
         shellenPerClick = 1;
+
+        statsDisplay = statsDisplayObject.GetComponent<StatsDisplay>();
     }
 
     // Update is called once per frame
@@ -37,12 +42,15 @@ public class MoneyCounter : MonoBehaviour
     {
         // Increase the player's money count by the specified value.
         shellen += shellenPerFrame;
+        statsDisplay.totalIncome += shellenPerFrame;
         UpdateText();
     }
 
     public void ClickBanknote()
     {
         shellen += shellenPerClick;
+        statsDisplay.banknotesMade++;
+        statsDisplay.totalIncome += shellenPerClick;
         UpdateText();
     }
 
