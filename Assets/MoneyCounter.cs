@@ -54,7 +54,7 @@ public class MoneyCounter : MonoBehaviour
         UpdateText();
     }
 
-    void UpdateText()
+    public void UpdateText()
     {
         TextMeshProUGUI shellenCount = shellenCountTextObject.GetComponent<TextMeshProUGUI>();
         shellenCount.SetText(string.Format("§ {0}", shellen));
