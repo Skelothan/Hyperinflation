@@ -26,7 +26,9 @@ public class MoneyCounter : MonoBehaviour
     // The amount of money the player earns every time they click the big banknote.
     public int shellenPerClick;
 
-    private int frameIndex;
+    public float inflationRate;
+
+    private int timeElapsed;
 
     // Start is called before the first frame update
     void Start()
@@ -35,10 +37,10 @@ public class MoneyCounter : MonoBehaviour
         Application.targetFrameRate = 60;
 
         shellen = 0;
-        conversionRate = 2.1f;
+        conversionRate = 2f;
         shellenPerSecond = 0;
         shellenPerClick = 1;
-        frameIndex = 0;
+        timeElapsed = 0;
 
         statsDisplay = statsDisplayObject.GetComponent<StatsDisplay>();
     }
@@ -47,14 +49,15 @@ public class MoneyCounter : MonoBehaviour
     void Update()
     {
         // Increase the player's money count by the specified value.
-        frameIndex++;
-        if (frameIndex % 60 == 0)
+        timeElapsed++;
+        if (timeElapsed % 60 == 0)
         {
             shellen += shellenPerSecond;
             statsDisplay.totalIncome += shellenPerSecond;
+            conversionRate = Mathf.Pow(inflationRate, timeElapsed) + 1;
             UpdateText();
-            frameIndex = 0;
         }
+
     }
 
     public void ClickBanknote()

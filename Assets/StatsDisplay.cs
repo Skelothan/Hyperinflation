@@ -28,7 +28,7 @@ public class StatsDisplay : MonoBehaviour
     {
         TextMeshProUGUI statsTextMeshPro = statsTextObject.GetComponent<TextMeshProUGUI>();
         statsTextMeshPro.SetText(string.Format("" +
-        	"Banknotes made: {0}\nTotal income: § {1}\nIncome per second: § {2}/s\nShellen to USD: § {3} : $ 1", 
+        	"Banknotes made: {0}\nTotal income: § {1}\nIncome per second: § {2}/s\nShellen to USD: § {3:0.00} : $ 1", 
             banknotesMade, totalIncome, moneyCounter.shellenPerSecond, moneyCounter.conversionRate));
     }
 }
