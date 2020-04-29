@@ -1177,7 +1177,7 @@ MonoBehaviour:
   buildingName: Worker
   moneyCountObject: {fileID: 2114135023}
   buildingType: 1
-  buildingCostUSD: 50
+  buildingCostUSD: 25
 --- !u!114 &1153480358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1909,7 +1909,7 @@ MonoBehaviour:
   statsDisplayObject: {fileID: 327939498}
   shellen: 0
   conversionRate: 2.1
-  shellenPerFrame: 0
+  shellenPerSecond: 0
   shellenPerClick: 1
 --- !u!4 &2114135025
 Transform:

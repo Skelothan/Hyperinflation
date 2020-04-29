@@ -27,12 +27,13 @@ public class BuildingItems : MonoBehaviour
         
     }
 
-    void OnBuildingPurchase()
-    //@requires numBuildings.Length == shellenProductions.Length
+    public void OnBuildingPurchase()
     {
+        moneyCounter.shellenPerSecond = 0;
+        //@requires numBuildings.Length == shellenProductions.Length
         for (int i = 0; i < numBuildings.Length; i++)
         {
-            moneyCounter.shellenPerFrame += numBuildings[i] * shellenProductions[i];
+            moneyCounter.shellenPerSecond += numBuildings[i] * shellenProductions[i];
         }
         totalBuildings++;
 

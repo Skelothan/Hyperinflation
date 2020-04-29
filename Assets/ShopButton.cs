@@ -48,6 +48,8 @@ public class ShopButton : MonoBehaviour
             shopScript.numBuildings[buildingType]++;
         }
         moneyCounter.UpdateText();
+        
+        shopScript.OnBuildingPurchase();
 
     }
 }
