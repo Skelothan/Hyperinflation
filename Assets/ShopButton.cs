@@ -45,7 +45,9 @@ public class ShopButton : MonoBehaviour
         if (moneyCounter.shellen >= buildingCostShellen)
         {
             moneyCounter.shellen -= buildingCostShellen;
-            shopScript.numBuildings[buildingType]++;
+            // Only increase the building number if this doesn't buy bread
+            if (buildingType != 0)
+                shopScript.numBuildings[buildingType]++;
         }
         moneyCounter.UpdateText();
         

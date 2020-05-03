@@ -8,8 +8,10 @@ public class StatsDisplay : MonoBehaviour
 
     public GameObject moneyCountObject;
     public GameObject statsTextObject;
+    public GameObject shopObject;
 
     private MoneyCounter moneyCounter;
+    private BuildingItems shopScript;
 
     public int banknotesMade;
     public int totalIncome;
@@ -21,6 +23,7 @@ public class StatsDisplay : MonoBehaviour
         totalIncome = 0;
 
         moneyCounter = moneyCountObject.GetComponent<MoneyCounter>();
+        shopScript = shopObject.GetComponent<BuildingItems>();
     }
 
     // Update is called once per frame
@@ -31,4 +34,10 @@ public class StatsDisplay : MonoBehaviour
         	"Banknotes made: {0}\nTotal income: § {1}\nIncome per second: § {2}/s\nShellen to USD: § {3:0.00} : $ 1", 
             banknotesMade, totalIncome, moneyCounter.shellenPerSecond, moneyCounter.conversionRate));
     }
+
+    public void incrementBanknotesCount()
+    {
+        banknotesMade += shopScript.totalBuildings;
+    }
+
 }

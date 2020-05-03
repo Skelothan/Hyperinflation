@@ -203,6 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moneyCountObject: {fileID: 2114135023}
   statsTextObject: {fileID: 1065248894}
+  shopObject: {fileID: 975545347}
   banknotesMade: 0
   totalIncome: 0
 --- !u!1001 &336900720

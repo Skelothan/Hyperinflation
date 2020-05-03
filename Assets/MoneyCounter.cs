@@ -53,6 +53,7 @@ public class MoneyCounter : MonoBehaviour
         if (timeElapsed % 60 == 0)
         {
             shellen += shellenPerSecond;
+            statsDisplay.incrementBanknotesCount();
             statsDisplay.totalIncome += shellenPerSecond;
             conversionRate = Mathf.Pow(inflationRate, timeElapsed) + 1;
             UpdateText();
