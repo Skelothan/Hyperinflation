@@ -17,7 +17,7 @@ public class BuildingItems : MonoBehaviour
     void Start()
     {
         moneyCounter = moneyCountObject.GetComponent<MoneyCounter>();
-        shellenProductions = new int[] { 0, 1, 5 };
+        shellenProductions = new int[] { 0, 1, 5, 10};
         numBuildings = new int[shellenProductions.Length];
     }
 
