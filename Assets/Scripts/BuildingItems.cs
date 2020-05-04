@@ -39,4 +39,9 @@ public class BuildingItems : MonoBehaviour
 
 
     }
+
+    public int GetBreadCount()
+    {
+        return numBuildings[0];
+    }
 }

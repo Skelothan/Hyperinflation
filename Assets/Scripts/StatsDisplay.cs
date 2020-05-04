@@ -24,6 +24,8 @@ public class StatsDisplay : MonoBehaviour
 
         moneyCounter = moneyCountObject.GetComponent<MoneyCounter>();
         shopScript = shopObject.GetComponent<BuildingItems>();
+
+        Update();
     }
 
     // Update is called once per frame
@@ -31,8 +33,10 @@ public class StatsDisplay : MonoBehaviour
     {
         TextMeshProUGUI statsTextMeshPro = statsTextObject.GetComponent<TextMeshProUGUI>();
         statsTextMeshPro.SetText(string.Format("" +
-        	"Banknotes made: {0}\nTotal income: § {1}\nIncome per second: § {2}/s\nShellen to USD: § {3:0.00} : $ 1", 
-            banknotesMade, totalIncome, moneyCounter.shellenPerSecond, moneyCounter.conversionRate));
+            "Banknotes made: {0}\nTotal income: § {1}\nIncome per second: § {2}/s\nShellen to USD: § {3:0.00} : $ 1\nPrinters owned: {4}\n\n" +
+            "Bread: {5}", 
+            banknotesMade, totalIncome, moneyCounter.shellenPerSecond, moneyCounter.conversionRate, shopScript.totalBuildings, 
+            shopScript.GetBreadCount()));
     }
 
     public void incrementBanknotesCount()
