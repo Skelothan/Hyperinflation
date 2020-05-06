@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 1632841423051351399, guid: 0be9202d9bb934bf684ca325e3e4661d,
         type: 3}
       propertyPath: buildingCostUSD
-      value: 15
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1632841423051351399, guid: 0be9202d9bb934bf684ca325e3e4661d,
         type: 3}
