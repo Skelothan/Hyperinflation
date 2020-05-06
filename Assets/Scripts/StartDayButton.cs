@@ -19,7 +19,12 @@ public class StartDayButton : MonoBehaviour
             alpha = 1f;
 
         gameObject.GetComponent<CanvasRenderer>().SetAlpha(alpha);
-        gameObject.GetComponentInChildren<CanvasRenderer>().SetAlpha(alpha);
+
+        CanvasRenderer[] renderers = gameObject.GetComponentsInChildren<CanvasRenderer>();
+        for(int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].SetAlpha(alpha);
+        }
         gameObject.GetComponent<Button>().interactable = GameState.instance.GetState() == "night";
     }
 }
