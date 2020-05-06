@@ -6,6 +6,8 @@ using TMPro;
 public class MoneyCounter : MonoBehaviour
 {
 
+    public static MoneyCounter instance;
+
     public GameObject shellenCountTextObject;
     public GameObject usdCountTextObject;
     public GameObject statsDisplayObject;
@@ -28,7 +30,19 @@ public class MoneyCounter : MonoBehaviour
 
     public float inflationRate;
 
-    private int timeElapsed;
+    private uint timeElapsed;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -48,16 +62,19 @@ public class MoneyCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Increase the player's money count by the specified value.
-        timeElapsed++;
-        if (timeElapsed % 60 == 0)
+        if (GameState.instance.GetState() == "day")
         {
-            shellen += shellenPerSecond;
-            statsDisplay.totalIncome += shellenPerSecond;
-            conversionRate = Mathf.Pow(inflationRate, timeElapsed) + 1;
-            UpdateText();
+            // Increase the player's money count by the specified value.
+            timeElapsed++;
+            if (timeElapsed % 60 == 0)
+            {
+                shellen += shellenPerSecond;
+                statsDisplay.incrementBanknotesCount();
+                statsDisplay.totalIncome += shellenPerSecond;
+                conversionRate = Mathf.Pow(inflationRate, timeElapsed) + 1;
+                UpdateText();
+            }
         }
-
     }
 
     public void ClickBanknote()
@@ -76,5 +93,4 @@ public class MoneyCounter : MonoBehaviour
         TextMeshProUGUI usdCount = usdCountTextObject.GetComponent<TextMeshProUGUI>();
         usdCount.SetText(string.Format("$ {0:0.00}", shellen / conversionRate));
     }
-
 }

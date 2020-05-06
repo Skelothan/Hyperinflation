@@ -5,7 +5,8 @@ using UnityEngine;
 public class BuildingItems : MonoBehaviour
 {
 
-    public GameObject moneyCountObject;
+    public static BuildingItems instance;
+
     private MoneyCounter moneyCounter;
 
     public int[] numBuildings;
@@ -13,11 +14,23 @@ public class BuildingItems : MonoBehaviour
 
     public int totalBuildings;
 
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        moneyCounter = moneyCountObject.GetComponent<MoneyCounter>();
-        shellenProductions = new int[] { 0, 1, 5 };
+        moneyCounter = MoneyCounter.instance;
+        shellenProductions = new int[] { 0, 1, 5, 10};
         numBuildings = new int[shellenProductions.Length];
     }
 
@@ -38,5 +51,18 @@ public class BuildingItems : MonoBehaviour
         totalBuildings++;
 
 
+    }
+
+    public int GetBreadCount()
+    {
+        return numBuildings[0];
+    }
+
+    public void ConsumeBread()
+    {
+        if (numBuildings[0] == 0)
+            GameState.instance.ChangeState("gameover");
+        else
+            numBuildings[0]--;
     }
 }
