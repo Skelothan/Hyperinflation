@@ -68,6 +68,7 @@ public class Timer : MonoBehaviour
             if (timeSeconds == dayLength)
             {
                 GameState.instance.ChangeState("night");
+                BuildingItems.instance.ConsumeBread();
             }
         }
     }
