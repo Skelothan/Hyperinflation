@@ -31,12 +31,17 @@ public class StatsDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        string breadString = "no";
+        if (shopScript.GetBreadCount() == 1)
+            breadString = "yes";
+
+
         TextMeshProUGUI statsTextMeshPro = statsTextObject.GetComponent<TextMeshProUGUI>();
         statsTextMeshPro.SetText(string.Format("" +
             "Banknotes made: {0}\nTotal income: § {1}\nIncome per second: § {2}/s\nShellen to USD: § {3:0.00} : $ 1\nPrinters owned: {4}\n\n" +
-            "Date: {5}\nBread: {6} / 3", 
+            "Date: {5}\nPurchased Bread Today? : {6} ", 
             banknotesMade, totalIncome, moneyCounter.shellenPerSecond, moneyCounter.conversionRate, shopScript.totalBuildings,
-            timerScript.GetDate(), shopScript.GetBreadCount()));
+            timerScript.GetDate(), breadString));
     }
 
     public void incrementBanknotesCount()

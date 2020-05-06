@@ -36,7 +36,7 @@ public class ShopButton : MonoBehaviour
     {
         buildingCostShellen = (int)Mathf.Round(buildingCostUSD * moneyCounter.conversionRate);
         if (buildingType == 0)
-            gameObject.GetComponent<Button>().interactable = moneyCounter.shellen >= buildingCostShellen && shopScript.numBuildings[buildingType] < 3 && GameState.instance.GetState() == "day";
+            gameObject.GetComponent<Button>().interactable = moneyCounter.shellen >= buildingCostShellen && shopScript.numBuildings[buildingType] < 1 && GameState.instance.GetState() == "day";
         else
             gameObject.GetComponent<Button>().interactable = moneyCounter.shellen >= buildingCostShellen && GameState.instance.GetState() == "day";
 
@@ -55,6 +55,8 @@ public class ShopButton : MonoBehaviour
         // Only increase the total buildings number / update the shellen per second count if this doesn't buy bread
         if (buildingType != 0)
             shopScript.OnBuildingPurchase();
+        else
+            buildingCostUSD += 10;
 
     }
 }
