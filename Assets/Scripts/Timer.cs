@@ -6,6 +6,8 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
 
+    public static Timer instance;
+
     public GameObject timerBar;
     private Transform timerBarTransform;
 
@@ -17,6 +19,18 @@ public class Timer : MonoBehaviour
     private int timerBarMaxLength;
     private int timeHalfSeconds;
     private int timeSeconds;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -35,22 +49,27 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        time++;
-
-        if (time % 30 == 0)
+        if (GameState.instance.GetState() == "day")
         {
-            timeHalfSeconds++;
-            timerTMPro.SetText(GetTimeOfDay());
-        }
-        if (time % 60 == 0)
-        {
-            timeSeconds++;
-            UpdateVisualTimer();
-        }
+            time++;
 
-        // TODO: end day at day's end
+            if (time % 30 == 0)
+            {
+                timeHalfSeconds++;
+                timerTMPro.SetText(GetTimeOfDay());
+            }
+            if (time % 60 == 0)
+            {
+                timeSeconds++;
+                UpdateVisualTimer();
+            }
 
+            // TODO: end day at day's end
+            if (timeSeconds == dayLength)
+            {
+                GameState.instance.ChangeState("night");
+            }
+        }
     }
 
     public void ResetTimer()

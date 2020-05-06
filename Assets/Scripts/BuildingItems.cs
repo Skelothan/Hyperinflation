@@ -5,7 +5,6 @@ using UnityEngine;
 public class BuildingItems : MonoBehaviour
 {
 
-    public GameObject moneyCountObject;
     private MoneyCounter moneyCounter;
 
     public int[] numBuildings;
@@ -16,7 +15,7 @@ public class BuildingItems : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        moneyCounter = moneyCountObject.GetComponent<MoneyCounter>();
+        moneyCounter = MoneyCounter.instance;
         shellenProductions = new int[] { 0, 1, 5, 10};
         numBuildings = new int[shellenProductions.Length];
     }

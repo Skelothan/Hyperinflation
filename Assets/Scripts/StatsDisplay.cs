@@ -5,8 +5,6 @@ using TMPro;
 
 public class StatsDisplay : MonoBehaviour
 {
-
-    public GameObject moneyCountObject;
     public GameObject statsTextObject;
     public GameObject shopObject;
 
@@ -22,7 +20,7 @@ public class StatsDisplay : MonoBehaviour
         banknotesMade = 0;
         totalIncome = 0;
 
-        moneyCounter = moneyCountObject.GetComponent<MoneyCounter>();
+        moneyCounter = MoneyCounter.instance;
         shopScript = shopObject.GetComponent<BuildingItems>();
 
         Update();

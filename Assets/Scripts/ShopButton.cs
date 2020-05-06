@@ -36,9 +36,9 @@ public class ShopButton : MonoBehaviour
     {
         buildingCostShellen = (int)Mathf.Round(buildingCostUSD * moneyCounter.conversionRate);
         if (buildingType == 0)
-            gameObject.GetComponent<Button>().interactable = moneyCounter.shellen >= buildingCostShellen && shopScript.numBuildings[buildingType] < 3;
+            gameObject.GetComponent<Button>().interactable = moneyCounter.shellen >= buildingCostShellen && shopScript.numBuildings[buildingType] < 3 && GameState.instance.GetState() == "day";
         else
-            gameObject.GetComponent<Button>().interactable = moneyCounter.shellen >= buildingCostShellen;
+            gameObject.GetComponent<Button>().interactable = moneyCounter.shellen >= buildingCostShellen && GameState.instance.GetState() == "day";
 
         buttonText.SetText(string.Format("§ {0}\n{1}", buildingCostShellen, buildingName));
     }
