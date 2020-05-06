@@ -30,7 +30,7 @@ public class MoneyCounter : MonoBehaviour
 
     public float inflationRate;
 
-    private int timeElapsed;
+    private uint timeElapsed;
 
     private void Awake()
     {
@@ -92,10 +92,5 @@ public class MoneyCounter : MonoBehaviour
 
         TextMeshProUGUI usdCount = usdCountTextObject.GetComponent<TextMeshProUGUI>();
         usdCount.SetText(string.Format("$ {0:0.00}", shellen / conversionRate));
-    }
-
-    public void ResetTimeElapsed()
-    {
-        timeElapsed = 0;
     }
 }

@@ -304,7 +304,7 @@ PrefabInstance:
     - target: {fileID: 1632841423051351399, guid: 0be9202d9bb934bf684ca325e3e4661d,
         type: 3}
       propertyPath: buildingCostUSD
-      value: 275
+      value: 215
       objectReference: {fileID: 0}
     - target: {fileID: 1632841424014661791, guid: 0be9202d9bb934bf684ca325e3e4661d,
         type: 3}
@@ -458,7 +458,7 @@ PrefabInstance:
     - target: {fileID: 1632841423051351399, guid: 0be9202d9bb934bf684ca325e3e4661d,
         type: 3}
       propertyPath: buildingCostUSD
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1632841423051351399, guid: 0be9202d9bb934bf684ca325e3e4661d,
         type: 3}
@@ -687,7 +687,7 @@ PrefabInstance:
     - target: {fileID: 1632841423051351399, guid: 0be9202d9bb934bf684ca325e3e4661d,
         type: 3}
       propertyPath: buildingCostUSD
-      value: 130
+      value: 115
       objectReference: {fileID: 0}
     - target: {fileID: 1632841423051351399, guid: 0be9202d9bb934bf684ca325e3e4661d,
         type: 3}
