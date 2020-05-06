@@ -24,14 +24,15 @@ public class BuildingItems : MonoBehaviour
         {
             instance = this;
         }
+
+        shellenProductions = new int[] { 0, 1, 5, 10, 50, 100 };
+        numBuildings = new int[shellenProductions.Length];
     }
 
     // Start is called before the first frame update
     void Start()
     {
         moneyCounter = MoneyCounter.instance;
-        shellenProductions = new int[] { 0, 1, 5, 10, 50, 100};
-        numBuildings = new int[shellenProductions.Length];
     }
 
     // Update is called once per frame
