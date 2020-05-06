@@ -87,10 +87,15 @@ public class Timer : MonoBehaviour
 
     public string GetTimeOfDay()
     {
-        int hours = (timeHalfSeconds / 60 + 9) % 12;
+        int hours = (timeHalfSeconds / 60 + 8) % 12 + 1;
         int minutes = timeHalfSeconds % 60;
+        string period = "";
+        if (hours > 6 && hours <= 11)
+            period = "A.M.";
+        else
+            period = "P.M.";
 
-        return string.Format("{0}:{1:00}", hours, minutes);
+        return string.Format("{0}:{1:00} {2}", hours, minutes, period);
     }
 
     public void UpdateVisualTimer()
