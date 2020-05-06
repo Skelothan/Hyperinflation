@@ -30,7 +30,7 @@ public class BuildingItems : MonoBehaviour
     void Start()
     {
         moneyCounter = MoneyCounter.instance;
-        shellenProductions = new int[] { 0, 1, 5, 10};
+        shellenProductions = new int[] { 0, 1, 5, 10, 50, 100};
         numBuildings = new int[shellenProductions.Length];
     }
 

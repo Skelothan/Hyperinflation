@@ -10,6 +10,7 @@ public class StatsDisplay : MonoBehaviour
 
     private MoneyCounter moneyCounter;
     private BuildingItems shopScript;
+    private Timer timerScript;
 
     public int banknotesMade;
     public int totalIncome;
@@ -21,7 +22,8 @@ public class StatsDisplay : MonoBehaviour
         totalIncome = 0;
 
         moneyCounter = MoneyCounter.instance;
-        shopScript = shopObject.GetComponent<BuildingItems>();
+        shopScript = BuildingItems.instance;
+        timerScript = Timer.instance;
 
         Update();
     }
@@ -32,9 +34,9 @@ public class StatsDisplay : MonoBehaviour
         TextMeshProUGUI statsTextMeshPro = statsTextObject.GetComponent<TextMeshProUGUI>();
         statsTextMeshPro.SetText(string.Format("" +
             "Banknotes made: {0}\nTotal income: § {1}\nIncome per second: § {2}/s\nShellen to USD: § {3:0.00} : $ 1\nPrinters owned: {4}\n\n" +
-            "Bread: {5}", 
-            banknotesMade, totalIncome, moneyCounter.shellenPerSecond, moneyCounter.conversionRate, shopScript.totalBuildings, 
-            shopScript.GetBreadCount()));
+            "Date: {5}\nBread: {6} / 3", 
+            banknotesMade, totalIncome, moneyCounter.shellenPerSecond, moneyCounter.conversionRate, shopScript.totalBuildings,
+            timerScript.GetDate(), shopScript.GetBreadCount()));
     }
 
     public void incrementBanknotesCount()
