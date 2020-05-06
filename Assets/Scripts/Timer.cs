@@ -20,6 +20,8 @@ public class Timer : MonoBehaviour
     private int timeHalfSeconds;
     private int timeSeconds;
 
+    private int daysElapsed;
+
     private void Awake()
     {
         if (instance != null)
@@ -41,6 +43,8 @@ public class Timer : MonoBehaviour
         // 240 seconds = 1 minute
         dayLength = 240;
         timerBarMaxLength = 1250;
+
+        daysElapsed = 0;
 
         timerBarTransform = timerBar.GetComponent<Transform>();
         timerTMPro = timerTextObject.GetComponent<TextMeshProUGUI>();
@@ -78,6 +82,10 @@ public class Timer : MonoBehaviour
         time = 0;
         timeHalfSeconds = 0;
         timeSeconds = 0;
+
+        daysElapsed++;
+
+        // Reset visual timer
         Vector2 newScale = new Vector2(0, 10);
         timerBarTransform.localScale = newScale;
 
@@ -96,6 +104,33 @@ public class Timer : MonoBehaviour
             period = "P.M.";
 
         return string.Format("{0}:{1:00} {2}", hours, minutes, period);
+    }
+
+    public string GetDate()
+    {
+        int month = 1;
+        int day = 1;
+
+        if (daysElapsed == 0)
+            return "20XX-01-01";
+
+        if (daysElapsed > 58) // March. I highly doubt anyone will make it this far.
+        {
+            month = 3;
+            day = daysElapsed - 58;
+        }
+        else if (daysElapsed > 31) // February. 
+        {
+            month = 2;
+            day = daysElapsed - 31;
+        }
+        else // January. 
+        {
+            day = daysElapsed;
+        }
+
+
+        return string.Format("20XX-{0:00}-{1:00}", month, day);
     }
 
     public void UpdateVisualTimer()
