@@ -56,7 +56,7 @@ public class ShopButton : MonoBehaviour
         if (buildingType != 0)
             shopScript.OnBuildingPurchase();
         else
-            buildingCostUSD += 10;
+            buildingCostUSD += 12;
 
     }
 }
